@@ -25,7 +25,7 @@ extern GMutex *hist_lock;
 
 #define ACTIONS_TAB    2
 #define POPUP_DELAY    100
-#define CHECK_INTERVAL 500
+#define CHECK_INTERVAL 200 // mck changed from 500
 #define CHECK_APPINDICATOR_INTERVAL 30000 /**check for existence of indicator-appmenu  */
 #define ID_PRIMARY   0
 #define ID_CLIPBOARD 1

@@ -21,7 +21,7 @@
 
 G_BEGIN_DECLS
 
-#define DAEMON_INTERVAL 500
+#define DAEMON_INTERVAL 200 // mck changed from 500
 
 
 G_END_DECLS

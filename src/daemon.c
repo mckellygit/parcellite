@@ -85,7 +85,7 @@ static void reset_daemon(gpointer data)
   if (timeout_id != 0)
     g_source_remove(timeout_id);
   /* Add the daemon loop */
-  timeout_id = g_timeout_add_full(G_PRIORITY_LOW,
+  timeout_id = g_timeout_add_full(G_PRIORITY_DEFAULT, // mck changed from G_PRIORITY_LOW
                                   DAEMON_INTERVAL,
                                   (GSourceFunc)daemon_check,
                                   NULL,
@@ -99,7 +99,7 @@ void init_daemon_mode()
   primary = gtk_clipboard_get(GDK_SELECTION_PRIMARY);
   clipboard = gtk_clipboard_get(GDK_SELECTION_CLIPBOARD);
   /* Add the daemon loop */
-  timeout_id = g_timeout_add_full(G_PRIORITY_LOW,
+  timeout_id = g_timeout_add_full(G_PRIORITY_DEFAULT, // mck changed from G_PRIORITY_LOW
                                   DAEMON_INTERVAL,
                                   (GSourceFunc)daemon_check,
                                   NULL,
