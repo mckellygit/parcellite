@@ -64,6 +64,10 @@ g_signal_connect(clipboard, "owner-change",  G_CALLBACK(handle_owner_change), NU
 
 #include "parcellite.h"
 
+// mck - for setpriority ...
+#include <sys/time.h>
+#include <sys/resource.h>
+
 #include <ctype.h>
 #include <pthread.h>
 
@@ -2444,7 +2448,10 @@ int main(int argc, char *argv[])
 		close_fifos(fifo);
 		return 0;
 	}	
-  
+
+  // mck - requires sudo setcap 'cap_sys_nice=eip' [/usr/local/bin/]parcellite
+  setpriority(PRIO_PROCESS, 0, -9);
+
   /* Init Parcellite */
   parcellite_init(mode);
   /*g_printf("Start main loop\n"); */
